@@ -1,0 +1,55 @@
+<ion-view view-title="Add To Stock">
+  <ion-content>
+    <h1>Add to Stock</h1>
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Stock Type</span>
+        <select class="col-xs-18 nopadding input-sm" id="state" ng-model="stock.type"  ng-options="option.value as option.name for option in sType"></select>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Date</span>
+        <input type="text" placeholder="Date">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Add a Picture</span>
+        <input type="text" placeholder="Albulm/Book Cover">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Online Url</span>
+        <input type="text" placeholder="website address">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Description</span>
+        <textarea rows="5" placeholder="Short description"> <textarea>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Quantity</span>
+        <input type="text" placeholder="1-1000">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Tags</span>
+        <select><option>Faith</option><option>Healing</option><option>Prayer</option><option>fasting</option></select>
+        <textarea rows="5" placeholder="Tag Holder" readonly=""> <textarea>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Preacher</span>
+        <input type="text" placeholder="Preacher's Name">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Unit Price</span>
+        <input type="text" placeholder="Preacher's Name">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Discount</span>
+        <input type="text" placeholder="Discount Value">
+      </label>
+      <label class="toggle toggle-assertive">
+        <span class="input-label">Visible On Upload</span>
+        <input type="checkbox" ng-model="upload">
+        <div class="track">
+          <div class="handle"></div>
+        </div>
+      </label>
+    </div>
+  </ion-content>
+</ion-view>
