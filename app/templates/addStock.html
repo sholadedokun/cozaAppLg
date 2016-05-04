@@ -1,55 +1,84 @@
 <ion-view view-title="Add To Stock">
   <ion-content>
     <h1>Add to Stock</h1>
+    <form ng-submit="uploadPicture()">
     <div class="list">
       <label class="item item-input item-stacked-label">
         <span class="input-label">Stock Type</span>
         <select class="col-xs-18 nopadding input-sm" id="state" ng-model="stock.type"  ng-options="option.value as option.name for option in sType"></select>
       </label>
-      <label class="item item-input item-stacked-label">
+      <label class="item item-input item-stacked-label" ng-init="getLocation()">
         <span class="input-label">Date</span>
-        <input type="text" placeholder="Date">
+        <input type="text" placeholder="Date" required="" ng-model="stock.date">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Add a Picture</span>
-        <input type="text" placeholder="Albulm/Book Cover">
+        <input type="text" placeholder="Albulm/Book Cover" ng-model="stock.purl" ng-click="takePicture()">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Online Url</span>
-        <input type="text" placeholder="website address">
+        <input type="text" placeholder="website address" ng-model="stock.ourl">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Description</span>
-        <textarea rows="5" placeholder="Short description"> <textarea>
+        <textarea rows="5" placeholder="Short description" required="" ng-model="stock.desc"> </textarea>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Quantity</span>
-        <input type="text" placeholder="1-1000">
+        <input type="text" placeholder="1-1000" required="" ng-model="stock.quantity">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Tags</span>
-        <select><option>Faith</option><option>Healing</option><option>Prayer</option><option>fasting</option></select>
-        <textarea rows="5" placeholder="Tag Holder" readonly=""> <textarea>
+        <select class="col-xs-18 nopadding input-sm" id="state" ng-model="stock.tag" ng-change="tagCollector()"  ng-options="option.value as option.name for option in tagTypes"></select>
+        <textarea rows="5" placeholder="Tag Holder" ng-model="stock.tags" required="" ></textarea>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Preacher</span>
-        <input type="text" placeholder="Preacher's Name">
+        <input type="text" placeholder="Preacher's Name" required="" ng-model="stock.author">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Unit Price</span>
-        <input type="text" placeholder="Preacher's Name">
+        <input type="text" placeholder="unit price" required="" ng-model="stock.uprice">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Discount</span>
-        <input type="text" placeholder="Discount Value">
+        <input type="text" placeholder="Discount Value" ng-model="stock.discount">
       </label>
-      <label class="toggle toggle-assertive">
+      <label class="item item-input item-stacked-label">
         <span class="input-label">Visible On Upload</span>
-        <input type="checkbox" ng-model="upload">
-        <div class="track">
-          <div class="handle"></div>
+        <label class="toggle toggle-balanced">
+          <input type="checkbox" ng-model="stock.visibility">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </label>
+      <div class="item item-input item-stacked-label">
+        <span><h2><br />INSERT Album Art/Book Cover</h2></span>
+        <div button-bar">
+            <button class="button" ng-click="takePicture()">Take photo</button>
+
+            <button class="button" ng-click="selectPicture()">Select a photo</button>
         </div>
+    </div>
+        <!-- <a class="button" ng-click="viewPictures()">View loaded</a>-->
+        <label class="item item-input item-stacked-label">
+            <div ng-show="picData" class="item item-image">
+                Selected Picture
+                <img id="myImage" class="item" ng-src="{{picData}}" ng-click="uploadPicture()" style="height:auto;"/>
+            </div>
+            <div class="home-sq" ng-show=photos>
+                <p><i class="icon ion-alert-circled" style="color:#F60"></i>
+                    Click to set photo like avatar, or lon click to delete!
+                <p>
+              <div ng-repeat="photo in photos track by $index" ng-click="setPhoto($index, photo.name, profilo.user_id)" on-hold="delPhoto($index, photo.name)" style="background-image:url({{photo.file}});background-size:120% auto"> </div>
+            </div>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <button type="submit" class="button button-block button-balanced">Add to Stock</button>
+
       </label>
     </div>
+  </form>
   </ion-content>
 </ion-view>
